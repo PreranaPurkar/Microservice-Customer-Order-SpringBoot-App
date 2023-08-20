@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -16,5 +18,7 @@ public class CustomerE {
     private int cid;
     private String cname;
     private String phoneno;
+    @OneToMany(cascade = CascadeType.ALL)
+    public List<OrdersE> ordersEList;
 
 }
