@@ -9,7 +9,6 @@ import java.util.List;
 
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 @Entity
 @Table(name="Customer")
 public class CustomerE {
@@ -20,5 +19,19 @@ public class CustomerE {
     private String phoneno;
     @OneToMany(cascade = CascadeType.ALL)
     public List<OrdersE> ordersEList;
+
+    public CustomerE(int cid, String cname, String phoneno) {
+        this.cid = cid;
+        this.cname = cname;
+        this.phoneno = phoneno;
+    }
+
+    public CustomerE(int cid, String cname, String phoneno, List<OrdersE> ordersEList) {
+        this.cid = cid;
+        this.cname = cname;
+        this.phoneno = phoneno;
+        this.ordersEList = ordersEList;
+    }
+
 
 }
