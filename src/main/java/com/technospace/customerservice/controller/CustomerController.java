@@ -12,10 +12,12 @@ import java.util.List;
 public class CustomerController {
     @Autowired
     ICustomer iCustomer;
+
     @PostMapping("/addcustomer")
     public CustomerE addcustomer(@RequestBody CustomerE customerE){
         return iCustomer.save(customerE);
     }
+
     @GetMapping("/getallcustomers")
     public List<CustomerE> getallcustomers(){
         return iCustomer.findAll();
