@@ -1,0 +1,19 @@
+Server:
+  port: 8077
+
+Spring:
+  application:
+    name:apigateway
+  cloud:
+    gateway:
+      routes:
+        - id: customer-service
+          uri: lb://customer-service
+          predicates:
+            - Path= /customer/**
+        - id: orders-service
+          uri: lb://orders-service
+          predicates:
+          - Path= /orders/**
+
+

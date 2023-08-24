@@ -10,7 +10,7 @@ import org.springframework.web.client.RestTemplate;
 import java.util.List;
 
 @RestController
-@RequestMapping("/customer/api")
+@RequestMapping("/customer")
 public class CustomerController {
     @Autowired
     ICustomer iCustomer;
@@ -30,7 +30,7 @@ public class CustomerController {
     @GetMapping("/getcustomerbycid/{cid}")
     public CustomerE getcustomerbycid(@PathVariable("cid") int cid){
         CustomerE customerE = iCustomer.findById(cid).get();
-        List<OrdersE> ordersEList = restTemplate.getForObject("http://orders-service/order/api/getordersbycid/"+cid,List.class);
+        List<OrdersE> ordersEList = restTemplate.getForObject("http://orders-service/orders/getordersbycid/"+cid,List.class);
         customerE.setOrdersEList(ordersEList);
         return customerE;
     }
